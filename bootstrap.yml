@@ -9,14 +9,14 @@
    - name: install docker-compose
      shell: curl -L https://github.com/docker/compose/releases/download/1.7.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
-   - name: permission to docker
+   - name: permission to docker-compose
      shell: chmod +x /usr/local/bin/docker-compose
 
    - name: creating docker group
      group: name=docker state=present
 
-   - name: adding current user to docker group
-     user: name={{ username }} groups=docker append=yes
+   - name: creates user selene and adds to gropup docker
+     user: name=selene shell=/bin/bash groups=wheel,docker append=yes
 
    - name: starting docker service
      shell: service docker start
