@@ -1,5 +1,5 @@
 ---
-- hosts: prod
+- hosts: all
   gather_facts: no
   sudo: yes
   tasks:
